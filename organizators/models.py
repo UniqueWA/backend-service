@@ -8,3 +8,5 @@ class Organizator(AbstractModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     organizathion = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.user.username

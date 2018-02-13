@@ -77,6 +77,8 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        #   'rest_framework.permissions.AllowAny'
+
     ]
 }
 
@@ -108,9 +110,9 @@ DATABASES = {
         # If you are using Cloud SQL for MySQL rather than PostgreSQL, set
         # 'ENGINE': 'django.db.backends.mysql' instead of the following.
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USERNAME'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
+        'NAME': 'DEVELOP',
+        'USER': 'dca',
+        'PASSWORD': '12345678',
         # For MySQL, set 'PORT': '3306' instead of the following. Any Cloud
         # SQL Proxy instances running locally must also be set to tcp:3306.
         'PORT': '5432',
@@ -169,7 +171,8 @@ USE_TZ = True
 # Fill in your cloud bucket and switch which one of the following 2 lines
 # is commented to serve static content from GCS
 # STATIC_URL = 'https://storage.googleapis.com/<your-gcs-bucket>/static/'
-STATIC_URL='https://storage.googleapis.com/app-backend-service/static/'
+# STATIC_URL='https://storage.googleapis.com/app-backend-service/static/'
+STATIC_URL = '/static/'
 # [END staticurl]
 
 STATIC_ROOT = 'static/'
