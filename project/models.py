@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 from organizators.models import Organizator
 
+
 LEVEL_CHOICES = (
     ('low', "Низикий"),
     ('medium', "Средний"),
@@ -20,8 +21,16 @@ class Project(AbstractModel):
     date = models.DateTimeField(default=timezone.now)
     levelOfTraining = models.CharField(max_length=20, choices=LEVEL_CHOICES, default="medium")
     organizator = models.ForeignKey(Organizator, on_delete=models.CASCADE)
-    subscriber = models.ManyToManyField(User,through='Subscriber')
+    subscriber = models.ManyToManyField(User, through='Subscriber')
 
 
     def __str__(self):
         return self.name
+
+
+class Subscriber(AbstractModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="subscriber_project")
+
+    def __str__(self):
+        return self.user
