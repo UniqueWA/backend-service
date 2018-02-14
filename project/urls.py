@@ -4,7 +4,7 @@ from django.urls import path, include, re_path
 from rest_framework import serializers, viewsets, routers
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from backendsApp.app import views
+from project import views
 
 
 
@@ -19,4 +19,3 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
-
